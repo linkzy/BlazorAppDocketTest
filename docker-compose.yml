@@ -2,7 +2,13 @@ version: '3.4'
 
 services:
   blazorapp1.server:
-    image: ${DOCKER_REGISTRY-}blazorapp1server
+    image: ${DOCKER_REGISTRY-}blazorapp1server:1.0
     build:
       context: .
       dockerfile: BlazorApp1/Server/Dockerfile
+    networks: 
+     - nginxproxymanager_default
+ 
+networks:
+  nginxproxymanager_default:
+    external: true
